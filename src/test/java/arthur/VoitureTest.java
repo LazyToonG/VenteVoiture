@@ -32,9 +32,9 @@ class VoitureTest {
 
     @Test
     void testGetPrix() {
-        Voiture v = new Voiture("Peugeot", 15000);
+        Voiture v = new Voiture("Peugeot", 14000);
 
-        assertEquals(15000, v.getPrix());
+        assertEquals(14000, v.getPrix());
     }
 
     @Test
