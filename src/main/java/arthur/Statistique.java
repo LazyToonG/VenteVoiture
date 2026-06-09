@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package arthur;
 
-import com.example.demo.data.Voiture;
+//import com.example.demo.data.Voiture;
 
 public interface Statistique {
 
@@ -13,6 +13,5 @@ public interface Statistique {
      * @return le prix des voitures
      * @throws ArithmeticException s'il n'y a pas de voiture
      */
-    public int prix() throws ArithmeticException;
-
+    public Echantillon prixMoyen() throws ArithmeticException;
 }

@@ -1,60 +1,65 @@
 package arthur;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.util.*;
 
-class VoitureTest {
+//import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @Test
-    void testConstructeur() {
-        Voiture v = new Voiture("Toyota", 20000);
+//@SpringBootTest
+public class VoitureTest {
 
-        assertAll(
-                () -> assertEquals("Toyota", v.getMarque(), "La marque doit être Toyota"),
-                () -> assertEquals(20000, v.getPrix(), "Le prix doit être 20000")
-        );
+    private Voiture voiture;
+
+    @BeforeEach
+    public void setUp(){
+        this.voiture=new Voiture();
     }
 
     @Test
-    void testGetMarque() {
-        Voiture v = new Voiture("BMW", 30000);
-
-        assertEquals("BMW", v.getMarque());
+    public void creerVoiture() {
+        assertEquals(1, 1);
     }
 
     @Test
-    void testSetMarque() {
-        Voiture v = new Voiture("Audi", 25000);
-        v.setMarque("Mercedes");
-
-        assertEquals("Mercedes", v.getMarque());
+    public void testConstructeurParDefaut() {
+        assertNull(this.voiture.getMarque());
+        assertEquals(0, this.voiture.getPrix());
+        assertEquals(0, voiture.getId());
     }
 
     @Test
-    void testGetPrix() {
-        Voiture v = new Voiture("Peugeot", 14000);
-
-        assertEquals(14000, v.getPrix());
+    void testConstructeurAvecParametres() {
+        Voiture voitureB = new Voiture("Toyota", 20000);
+        assertEquals("Toyota", voitureB.getMarque());
+        assertEquals(20000, voitureB.getPrix());
     }
 
     @Test
-    void testSetPrix() {
-        Voiture v = new Voiture("Renault", 10000);
-        v.setPrix(12000);
+    public void testSettersEtGetters() {
+        Voiture voiture = new Voiture();
 
-        assertEquals(12000, v.getPrix());
+        voiture.setMarque("BMW");
+        voiture.setPrix(35000);
+        voiture.setId(1);
+
+        assertEquals("BMW", voiture.getMarque());
+        assertEquals(35000, voiture.getPrix());
+        assertEquals(1, voiture.getId());
     }
 
     @Test
-    void testPlusieursModifications() {
-        Voiture v = new Voiture("Ford", 18000);
+    public void testToString() {
+        Voiture voiture = new Voiture("Audi", 30000);
+        voiture.setId(5);
 
-        v.setMarque("Tesla");
-        v.setPrix(50000);
+        String resultat = voiture.toString();
 
-        assertAll(
-                () -> assertEquals("Tesla", v.getMarque()),
-                () -> assertEquals(50000, v.getPrix())
-        );
+        assertTrue(resultat.contains("Audi"));
+        assertTrue(resultat.contains("30000"));
+        assertTrue(resultat.contains("5"));
     }
+
 }
