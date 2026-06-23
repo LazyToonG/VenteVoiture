@@ -30,5 +30,8 @@ test {
 
 jacocoTestReport {
 	dependsOn test // tests are required to run before generating the report
+	reports {
+		html.required = true
+	}
 }
 
